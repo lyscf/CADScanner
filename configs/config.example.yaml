@@ -1,0 +1,90 @@
+# CADScanner Configuration
+
+analysis:
+  max_file_size: 10485760  # 10MB
+  timeout: 30
+  enable_verbose: false
+  enable_deobfuscation: true
+
+detection:
+  rule_path: ""
+  attack_path: ""
+  threshold: 0.5
+  enable_rules: true
+  enable_attack: true
+
+scoring:
+  decision_threshold: 0.6
+  enable_formal: true
+  primitive_weight: 0.5
+  pattern_weight: 0.3
+  context_weight: 0.2
+  rule_weight: 0.25
+  attack_weight: 0.20
+  feature_weight: 0.30
+  formal_weight: 0.25
+  context_components:
+    env_awareness: 0.3
+    persistence: 0.35
+    execution: 0.35
+  attack_weights:
+    T1547.001: 0.90
+    T1059.003: 0.85
+    T1059.005: 0.88
+    T1059.007: 0.80
+    T1105: 0.95
+    T1106: 0.85
+    T1112: 0.80
+    T1218.010: 0.95
+    T1027: 0.70
+    T1140: 0.65
+    T1082: 0.60
+    T1083: 0.55
+    T1070.004: 0.80
+    T1564.001: 0.85
+    T1071.001: 0.90
+    T1543: 0.85
+    T1055: 0.95
+  rule_multipliers:
+    COM_DROPPER_001: 1.0
+    FINDCOPY_001: 1.0
+    NETWORK_001: 0.4
+    NET_DROPPER_001: 1.0
+    NET_STUB_001: 1.0
+    REC_FAS_PROP_001: 1.0
+    REGISTRY_001: 1.0
+  risk_floors:
+    BOOTDAT_CHAIN_001: 0.60
+    COM_DROPPER_001: 0.72
+    DESTRUCT_001: 0.62
+    EXFIL_STUB_001: 0.70
+    DESTRUCT_STUB_001: 0.70
+    FINDCOPY_001: 0.68
+    NET_DROPPER_001: 0.74
+    NET_STUB_001: 0.68
+    PROC_EXEC_001: 0.76
+    REACT_PROP_001: 0.74
+    REC_FAS_PROP_001: 0.70
+    REGISTRY_001: 0.62
+    SCRIPTCTRL_001: 0.76
+    STARTUP_COPY_STR_001: 0.66
+    STARTUP_HOOK_001: 0.70
+    STARTUP_INFECT_001: 0.71
+    STARTUP_LOAD_001: 0.72
+    STARTUP_REWRITE_001: 0.72
+    WORM_001: 0.62
+    WORM_REPL_001: 0.68
+
+llm:
+  enabled: false
+  provider: "openai_compatible"
+  base_url: ""
+  model: ""
+  api_key: ""
+  api_key_env: ""
+  temperature: 0.0
+  max_output_tokens: 1200
+  timeout_seconds: 120
+  enable_fusion: true
+  cache_dir: ".cadscanner-cache/llm"
+
